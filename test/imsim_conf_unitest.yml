@@ -1,0 +1,235 @@
+#Configuration for simulation
+IMSIM :
+  DEFAULT :
+    CAMERA : mycamera
+    OPTIC : myoptic
+    FILTER : C
+    SOURCE : vega
+    OBSERVATORY : myobservatory
+  myconfig1 :
+    #List means do simulation for all value
+    CAMERA : KL6060bsi
+    OPTIC : rifast800
+    FILTER : C
+    SOURCE : vega
+    OBSERVATORY : myobservatory
+  test :
+    CAMERA: KL6060bsi
+    OPTIC: rifast400
+    FILTER: C
+    SOURCE: vega
+    OBSERVATORY: myobservatory
+
+  tesca_1 :
+    CAMERA: KL6060bsi
+    OPTIC: tesca
+    FILTER: C
+    OBSERVATORY: myobservatory
+
+#definition of camera
+CAMERA :
+  #default value for camera
+  DEFAULT :
+    sensor_type : CCD
+    quantum_efficiency: 0.7
+    readout_noise: 5
+    dark_currant: 0.1
+    gain: 1
+    electron_multiplier: 1
+    exposure_time: 10
+
+  mycamera :
+    sensor_type : CCD
+    nb_photocell_axis1 : 4000
+    photocell_size_axis1 : 9e-6
+    bin_axis1 : 1
+    nb_photocell_axis2 : 4000
+    photocell_size_axis2 : 9e-6
+    bin_axis2 : 1
+    quantum_efficiency : 0.7
+    readout_noise : 5
+    dark_currant : 0.1
+    gain : 1
+    electron_multiplier : 1
+    exposure_time : 10
+
+  KL6060bsi:
+    sensor_type : CMOS
+    nb_photocell_axis1 : 6144
+    photocell_size_axis1 : 10e-6
+    bin_axis1 : 1
+    nb_photocell_axis2 : 6200
+    photocell_size_axis2 : 10e-6
+    bin_axis2 : 1
+    quantum_efficiency : 0.85
+    readout_noise : 4.7
+    dark_currant : 0.2
+    gain : 1.5
+    exposure_time : 2
+
+#definition of optic
+OPTIC :
+  #default value for optic
+  DEFAULT :
+    transmission: 0.4
+    fwhm_psf_opt: 8e-6
+
+  myoptic :
+    diameter : 0.2
+    focal_length : 1
+    transmission : 0.4
+    fwhm_psf_opt : 8e-6
+
+  rifast800 :
+    diameter : 0.8
+    focal_length : 3.04
+    transmission : 0.4
+    fwhm_psf_opt : 8e-6
+    corrected_circle : 0.08
+
+  rifast400 :
+    diameter : 0.4
+    foc_diameter_ratio : 3.8
+    transmission : 0.50
+    fwhm_psf_opt : 5e-6
+    orrected_circle : 0.07
+
+  tesca:
+    diameter: 0.9
+    focal_length: 3.161
+    transmission: 0.68
+    fwhm_psf_opt: 20e-6
+    orrected_circle: 0.3
+#definition of filter
+FILTER :
+  #default value for filter
+  DEFAULT :
+    transmission : 1
+
+  C :
+    band : C
+    central_wavelength : 0.6
+    bandpass_width : 0.3
+    flux_mag_zero : 3100
+    transmission : 1
+
+  U:
+    band: U
+    central_wavelength: 0.36
+    bandpass_width: 0.15
+    flux_mag_zero: 1810
+    transmission: 1
+
+  B:
+    band: B
+    central_wavelength: 0.44
+    bandpass_width: 0.22
+    flux_mag_zero: 4260
+    transmission: 1
+
+  V:
+    band: V
+    central_wavelength: 0.55
+    bandpass_width: 0.16
+    flux_mag_zero: 3640
+    transmission: 1
+
+  R:
+    band: R
+    central_wavelength: 0.64
+    bandpass_width: 0.23
+    flux_mag_zero: 3080
+    transmission: 1
+
+  I:
+    band: I
+    central_wavelength: 0.79
+    bandpass_width: 0.19
+    flux_mag_zero: 2550
+    transmission: 1
+
+  J:
+    band: J
+    central_wavelength: 1.26
+    bandpass_width: 0.16
+    flux_mag_zero: 1600
+    transmission: 1
+
+  H:
+    band: H
+    central_wavelength: 1.60
+    bandpass_width: 0.23
+    flux_mag_zero: 1080
+    transmission: 1
+
+  K:
+    band: K
+    central_wavelength: 2.22
+    bandpass_width: 0.23
+    flux_mag_zero: 670
+    transmission: 1
+
+  g:
+    band: g
+    central_wavelength: 0.52
+    bandpass_width: 0.14
+    flux_mag_zero: 3730
+    transmission: 1
+
+  r:
+    band: r
+    central_wavelength: 0.67
+    bandpass_width: 0.14
+    flux_mag_zero: 4490
+    transmission: 1
+
+  i:
+    band: i
+    central_wavelength: 0.79
+    bandpass_width: 0.16
+    flux_mag_zero: 4760
+    transmission: 1
+
+  z:
+    band: z
+    central_wavelength: 0.91
+    bandpass_width: 0.13
+    flux_mag_zero: 4810
+    transmission: 1
+
+
+#definition of source
+SOURCE :
+  #default value for source
+  DEFAULT :
+    abs_stellar_mag : 0
+    dl_mpc : 1
+    ph_band : C
+  mysource :
+    abs_stellar_mag : myabsstelarmag
+    dl_mpc : mydistentluminmpc
+    ph_band : myphband
+  vega :
+    abs_stellar_mag: 0.582
+    dl_mpc: 7.67E-6
+    ph_band: C
+  aldebaran :
+    abs_stellar_mag : -0.70
+    dl_mpc : 20.43E-6
+    app_stellar_mag : 0.85
+    ph_band: C
+#definition of observatory
+OBSERVATORY :
+  #default value for observatory
+  DEFAULT :
+    elevation: 65
+    atmosphere_transmission: 0.5
+    seeing: 3.0
+    lunar_age: 0
+    photometric_band: V
+
+  myobservatory :
+    elevation: 65
+    atmosphere_transmission: 0.5
+    seeing: 1.0
+    sky_brightness: 21.0

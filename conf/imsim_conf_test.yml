@@ -1,0 +1,62 @@
+#Configuration for simulation
+SIMULATION :
+  DEFAULT :
+    CAMERA : defaultcam
+    OPTIC : defaultoptic
+    FILTER : defaultfilter
+    SOURCE : defaultsource
+    OBSERVATORY : defaultobservatory
+  myconfig1 :
+    #List means do simulation for all value
+    CAMERA :
+      - mycam1
+      - mycam2
+    OPTIC : myoptic
+    FILTER :
+      - myfiltre1
+      - myfiltre2
+    SOURCE : mysource
+    OBSERVATORY : myobservatory
+
+#definition of camera
+CAMERA :
+  #default value for camera
+  DEFAULT :
+
+  mycamera :
+
+
+#definition of optic
+OPTIC :
+  #default value for optic
+  DEFAULT :
+
+  myoptic :
+
+#definition of filter
+FILTER :
+  #default value for filter
+  DEFAULT :
+
+  myfilter :
+
+#definition of source
+SOURCE :
+  #default value for source
+  DEFAULT :
+    app_stellar_mag : defaulappstellarmag
+    ph_band : defaultphband
+  mysource :
+    abs_stellar_mag : myabsstelarmag
+    dl_mpc : mydistentluminmpc
+    ph_band : myphband
+  vega :
+    abs_stellar_mag: 0.582
+    dl_mpc: 7.67E-6
+    ph_band: C
+#definition of observatory
+OBSERVATORY :
+  #default value for observatory
+  DEFAULT :
+
+  myobservatory :

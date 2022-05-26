@@ -1,0 +1,24 @@
+#definition of source
+SOURCE :
+  #default value for source
+  DEFAULT :
+    abs_stellar_mag : 0
+    dl_mpc : 1
+    ph_band : C
+  mysource :
+    abs_stellar_mag : myabsstelarmag
+    dl_mpc : mydistentluminmpc
+    ph_band : myphband
+  vega :
+    abs_stellar_mag: 0.582
+    dl_mpc: 7.67E-6
+    ph_band: C
+  aldebaran :
+    abs_stellar_mag : -0.70
+    dl_mpc : 20.43E-6
+    app_stellar_mag : 0.85
+    ph_band: C
+  acrux:
+    dl_mpc: 98.72E-6
+    app_stellar_mag: 0.77
+    ph_band: C
