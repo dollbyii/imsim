@@ -16,6 +16,7 @@ class Imsim(element.Element):
     """
     SETTING_PATH_ROOT = "IMSIM"
     SETTING_DEFAULT_NAME = "DEFAULT"
+    VERSION = "1.0.0"
 
     def __init__(self, settings, name):
         """init for Imsim
@@ -567,7 +568,7 @@ class Imsim(element.Element):
         em = self.camera.get_electron_multiplier()
         skypix_el = self.__sky_brightness_pixel_el(t)
         fpix_el = self.__object_brightness_pixel_el(t, apparent_stellar_mag)
-        n_ro = self.camera.get_readout_noise()
+        n_ro = self.camera.get_pixel_readout_noise()
         if all(x is None for x in [c_th, bin1, bin2, t, fex, em, skypix_el, fpix_el, n_ro]):
             return None
 
@@ -589,10 +590,10 @@ class Imsim(element.Element):
         """
         f_ph = self.__object_brightness_ph(apparent_stellar_mag)
 
-        n_ro = self.camera.get_readout_noise()
-        c_th = self.camera.get_dark_currant()
-        bin1 = self.camera.get_bin_axis1()
-        bin2 = self.camera.get_bin_axis2()
+        n_ro = self.camera.get_pixel_readout_noise()
+        c_th = self.camera.get_pixel_dark_currant()
+        # bin1 = self.camera.get_bin_axis1()
+        # bin2 = self.camera.get_bin_axis2()
         fex = self.camera.get_emccd_express_noise_factor()
         em = self.camera.get_electron_multiplier()
         sky_ph = self.__sky_brightness_ph()
@@ -603,13 +604,13 @@ class Imsim(element.Element):
         h = self.camera.get_quantum_efficiency()
         fpix = self.__flux_fraction_brightest_pixel()
 
-        if all(x is None for x in [c_th, bin1, bin2, fex, em, n_ro, sky_ph, w, topt, f_ph, d, tatm, h, fpix]):
+        if all(x is None for x in [c_th, fex, em, n_ro, sky_ph, w, topt, f_ph, d, tatm, h, fpix]):
             return None
 
         if snr is None or not isinstance(snr, numbers.Number) or snr <= 0:
             return None
         c = snr ** 2 * n_ro ** 2
-        b = snr ** 2 * ((c_th * bin1 * bin2 * fex * em ** 2) +
+        b = snr ** 2 * ((c_th * fex * em ** 2) +
                        (sky_ph * math.pi * d ** 2 / 4 * w * topt * h * fex * em ** 2) +
                        (f_ph * math.pi * d ** 2 / 4 * tatm * topt * h * fpix * fex * em ** 2))
         a = -(f_ph * math.pi * d ** 2 / 4 * tatm * topt * h * fpix * em) ** 2
@@ -628,7 +629,7 @@ class Imsim(element.Element):
         t = exposure_time
         if t is None:
             t = self.get_default_exposure_time()
-        n_ro = self.camera.get_readout_noise()
+        n_ro = self.camera.get_pixel_readout_noise()
         c_th = self.camera.get_dark_currant()
         bin1 = self.camera.get_bin_axis1()
         bin2 = self.camera.get_bin_axis2()

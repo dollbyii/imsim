@@ -14,6 +14,10 @@ class ImSimTest(unittest.TestCase):
         imsim = self.__setImsim("aimsim")
         self.assertEqual(imsim.name, None)
 
+    def test_init_version(self):
+        imsim = self.__setImsim("V")
+        self.assertEqual(imsim.get_version(), imsim.VERSION)
+
     # Test deffault value
     def test_init_default_source(self):
         imsim = self.__setImsim("aimsim")
@@ -186,11 +190,47 @@ class ImSimTest(unittest.TestCase):
         t = imsim.exposure_time_from_snr_mag(snr, magnitude)
         self.assertAlmostEqual(exp_t, t, 4)
 
+    def test_exposure_time_from_snr_mag_bin_ccd(self):
+        imsim = self.__setImsim("myconfig1")
+        imsim.set_camera("myCCDbin2")
+        snr = 7
+        magnitude = 20
+        exp_t = 11.77828
+        t = imsim.exposure_time_from_snr_mag(snr, magnitude)
+        self.assertAlmostEqual(exp_t, t, 4)
+
+    def test_exposure_time_from_snr_mag_bin_cmos(self):
+        imsim = self.__setImsim("myconfig1")
+        imsim.set_camera("myCMOSbin2")
+        snr = 7
+        magnitude = 20
+        exp_t = 16.72891
+        t = imsim.exposure_time_from_snr_mag(snr, magnitude)
+        self.assertAlmostEqual(exp_t, t, 4)
+
     def test_limit_mag_from_snr_exposure_time(self):
         imsim = self.__setImsim("myconfig1")
         snr = 7
         exp = 10
         exp_mag = 19.38501
+        mag = imsim.limit_mag_from_snr_exposure_time(snr, exp)
+        self.assertAlmostEqual(exp_mag, mag, 4)
+
+    def test_limit_mag_from_snr_exposure_time_bin_ccd(self):
+        imsim = self.__setImsim("myconfig1")
+        imsim.set_camera("myCCDbin2")
+        snr = 7
+        exp = 10
+        exp_mag = 19.89019
+        mag = imsim.limit_mag_from_snr_exposure_time(snr, exp)
+        self.assertAlmostEqual(exp_mag, mag, 4)
+
+    def test_limit_mag_from_snr_exposure_time_bin_cmos(self):
+        imsim = self.__setImsim("myconfig1")
+        imsim.set_camera("myCMOSbin2")
+        snr = 7
+        exp = 10
+        exp_mag = 19.56917
         mag = imsim.limit_mag_from_snr_exposure_time(snr, exp)
         self.assertAlmostEqual(exp_mag, mag, 4)
 

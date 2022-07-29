@@ -292,6 +292,18 @@ class Camera(element.Element):
         """
         return self.readout_noise
 
+    def get_pixel_readout_noise(self):
+        """set_readout_noise get readout_noise value
+            Args :
+            Returns :
+                readout_noise (float) : return readout_noise value
+        """
+        bin_factor = 1
+        if self.sensor_type == "CMOS":
+            bin_factor = self.bin_axis1 * self.bin_axis2
+
+        return self.readout_noise * bin_factor
+
     def set_dark_currant(self, dark_currant):
         """set_dark_currant set dark_currant value
             Args :
@@ -316,6 +328,16 @@ class Camera(element.Element):
                 dark_currant (float) : return dark_currant value
         """
         return self.dark_currant
+
+    def get_pixel_dark_currant(self):
+        """set_dark_currant get dark_currant value
+            Args :
+            Returns :
+                dark_currant (float) : return dark_currant value
+        """
+        bin1 = self.get_bin_axis1()
+        bin2 = self.get_bin_axis2()
+        return self.dark_currant * bin1 * bin2
 
     def set_gain(self, gain):
         """set_gain set gain value

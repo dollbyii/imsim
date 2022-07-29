@@ -10,6 +10,7 @@ class Element:
     """
     SETTING_PATH_ROOT = "ELEMENT"
     SETTING_DEFAULT_NAME = "DEFAULT"
+    VERSION = "NC"
 
     def __init__(self, settings, name):
         """init for Element
@@ -58,6 +59,14 @@ class Element:
                 name (float) : return name value
         """
         return self.name
+
+    def get_version(self):
+        """get_name get name value
+            Args :
+            Returns :
+                name (float) : return name value
+        """
+        return self.VERSION
 
     def _gen_element_object(self, obj_var, setting=None):
         """set_source set source value
