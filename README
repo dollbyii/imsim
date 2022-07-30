@@ -45,6 +45,8 @@ Gimsim
 Gimsim est une version graphique de Imsim.
 La première version (V1.x.x) est assez minimaliste.
 
+Il est possible de généré un exécutable avec le scripte gimsim_install.sh.
+
 Il y est possible de sélectionner un fichier de configuration
 ainsi que la configuration définie dans la section "IMSIM". Si on modifie de fichier de configuration, il est
 possible de le recharger avec le bouton "Reload".
@@ -56,3 +58,5 @@ calculer la magnitude limite de la configuration choisie avec le temps d'exposit
 
 Dans la section "Exposur time" on peut donner une magnitude limite à atteindre et cliquer sur "Calculate exposur time"
 pour calculer le temp d'exposition nécessaire à la configuration choisie pour atteindre la magnitude limite demandé.
+
+Les prochaines versions permettront d’afficher et de modifier directement dans l’interface des différant équipement.
