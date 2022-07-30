@@ -14,14 +14,6 @@ IMSIM :
     SOURCE : vega
     OBSERVATORY : myobservatory
     
-  myconfig2 :
-    #List means do simulation for all value
-    CAMERA : KL6060bsi
-    OPTIC : rifast800r
-    FILTER : C
-    SOURCE : vega
-    OBSERVATORY : myobservatory
-    
   test :
     CAMERA: KL6060bsi
     OPTIC: rifast400
@@ -29,7 +21,7 @@ IMSIM :
     SOURCE: vega
     OBSERVATORY: myobservatory
 
-  tesca_1 :
+  tesca_KL6060BSI :
     CAMERA: KL6060bsi
     OPTIC: tesca
     FILTER: C
@@ -81,31 +73,7 @@ CAMERA :
     dark_currant : 0.2
     gain : 1.5
 
-  myCMOSbin2:
-    sensor_type: CMOS
-    nb_photocell_axis1: 6144
-    photocell_size_axis1: 10e-6
-    bin_axis1: 2
-    nb_photocell_axis2: 6200
-    photocell_size_axis2: 10e-6
-    bin_axis2: 2
-    quantum_efficiency: 0.85
-    readout_noise: 4.7
-    dark_currant: 0.2
-    gain: 1.5
 
-  myCCDbin2:
-    sensor_type: CCD
-    nb_photocell_axis1: 6144
-    photocell_size_axis1: 10e-6
-    bin_axis1: 2
-    nb_photocell_axis2: 6200
-    photocell_size_axis2: 10e-6
-    bin_axis2: 2
-    quantum_efficiency: 0.85
-    readout_noise: 4.7
-    dark_currant: 0.2
-    gain: 1.5
 
 #definition of optic
 OPTIC :
@@ -150,6 +118,7 @@ OPTIC :
     transmission: 0.68
     fwhm_psf_opt: 8e-6
     orrected_circle: 0.3
+
 #definition of filter
 FILTER :
   #default value for filter
@@ -282,7 +251,7 @@ OBSERVATORY :
     lunar_age: 0
     photometric_band: V
 
-  myobservatory :
+  Calern :
     elevation: 65
     atmosphere_transmission: 0.5
     seeing: 1.0

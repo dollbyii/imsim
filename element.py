@@ -22,6 +22,9 @@ class Element:
         self.logger = logging.getLogger(__name__)
         self.local_setting = None
         self.name = None
+        if name is None or name == "":
+            name = "DEFAULT"
+
         self.str = self.__class__.__name__ + " : "
         self.local_setting = self._get_setting_obj_from_param(settings)
         if isinstance(self.local_setting, Settings):

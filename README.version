@@ -1,0 +1,16 @@
+=============
+Soft : Gimsim
+Version : 1.0.0
+Date : 29/07/2022
+Auteur : Loic EYMAR
+-------------
+Version initiale avec GUI minimale.
+
+=============
+Soft : Imsim
+Version : 1.0.0
+Date : 29/07/2022
+Auteur : Loic EYMAR
+-------------
+Version initiale au proces idantique au code de "etc_tools" de audela.
+Ajout de la gestion du bining pour les capteurs CMOS.

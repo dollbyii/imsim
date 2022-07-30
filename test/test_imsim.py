@@ -19,6 +19,15 @@ class ImSimTest(unittest.TestCase):
         self.assertEqual(imsim.get_version(), imsim.VERSION)
 
     # Test deffault value
+    def test_init_setting_str(self):
+        conf_file = "imsim_conf_unitest.yml"
+        imsim = Imsim(conf_file, "myconfig1")
+
+        conf_file = os.path.abspath(conf_file)
+        setting = Settings(conf_file)
+        self.assertEqual(imsim.observatory.name, setting.get_setting(['IMSIM', 'myconfig1', 'OBSERVATORY']))
+
+    # Test deffault value
     def test_init_default_source(self):
         imsim = self.__setImsim("aimsim")
         self.assertEqual(imsim.source, None)

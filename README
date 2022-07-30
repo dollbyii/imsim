@@ -1,0 +1,58 @@
+######################################################
+#                       Imsim                        #
+######################################################
+
+Introduction
+=====================
+Imsim signifie « images simulation ». Ce programme permet
+d’estimer la magnitude limite ou le temps d’exposition
+d’un ensemble télescope/camera/filtre/observatoire.
+
+Architechture
+=====================
+Le code est divisé en plusieurs classes qui hérite toutes de la classe "Element".
+Chaque classe représente un composant ou un élément de la chaine d'acquisition.
+
+Les classes sont les suivantes :
+ * camera
+ * filter
+ * observatory
+ * optic
+ * source
+
+La classe Settings permet de lire et exploiter les fichiers de configuration.
+
+Toute la configuration est contenue dans un fichir yml.
+Le premier niveau de l'arborescence est le nom de la classe.
+Le deuxième représente une instance de cette classe.
+Par exemple dans la section « CAMERA » on trouve la configuration de plusieurs caméra différentes (KL6060,  QHY600 …).
+On trouver dans les sections de configuration de chaque classe une instance « DEFAULT » qui définie la valeur par défaut de chaque paramètre de la classe.
+Dans la section « IMSIM » on peut définir des ensembles de CAMERA/FILTER/OBSERVATORY/OPTIC/SOURCE a utiliser pour le calcule.
+
+Actuellement la classe « Source » a peu d’importance.
+
+Exemple basique
+=====================
+from imsim import Imsim
+conf_file = "C:/Users/leymar/PycharmProjects/imsim/test/imsim_conf_unitest.yml"
+imsim = Imsim(conf_file, "tesca_1")
+
+print(imsim.exposure_time_from_snr_mag(5, 21.5))
+print(imsim.limit_mag_from_snr_exposure_time(7, 450))
+
+Gimsim
+=====================
+Gimsim est une version graphique de Imsim.
+La première version (V1.x.x) est assez minimaliste.
+
+Il y est possible de sélectionner un fichier de configuration
+ainsi que la configuration définie dans la section "IMSIM". Si on modifie de fichier de configuration, il est
+possible de le recharger avec le bouton "Reload".
+
+Le champ "SNR" permet de définir le ratio signal a bruis a utiliser pour le calcul.
+
+Dans la section "Limit Magnitude" on peut donner un temps d'exposition et cliquer sur "Calculate limit mag" pour
+calculer la magnitude limite de la configuration choisie avec le temps d'exposition donnée.
+
+Dans la section "Exposur time" on peut donner une magnitude limite à atteindre et cliquer sur "Calculate exposur time"
+pour calculer le temp d'exposition nécessaire à la configuration choisie pour atteindre la magnitude limite demandé.

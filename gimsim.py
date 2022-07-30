@@ -11,7 +11,7 @@ from settings import Settings
 from imsim import Imsim
 
 GIMSIM_VERSION = "1.0.0"
-GIMSIM_VERSION_DATE = "23/07/2022"
+GIMSIM_VERSION_DATE = "30/07/2022"
 
 # Construction de la fenêtre principale «root»
 root = tk.Tk()
@@ -114,9 +114,9 @@ frame_exp_time = tk.LabelFrame(root, text="Exposure time")
 # Construction widget
 setting_path_label_l = tk.Label(frame_config, text="Setting file path : ")
 setting_path_l = tk.Label(frame_config, textvariable=setting_path)
-config_l = tk.Label(frame_config, text="Config : ")
+config_l = tk.Label(frame_config, text="IMSIM config : ")
 config_e = tk.Entry(frame_config, textvariable=config_val)
-reload_b = tk.Button(frame_config, text='reload', command=load_conf)
+reload_b = tk.Button(frame_config, text='Reload', command=load_conf)
 
 snr_l = tk.Label(frame_snr, text="SNR :")
 snr_e = tk.Entry(frame_snr, textvariable=snr_val)
