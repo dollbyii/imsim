@@ -1,13 +1,12 @@
 import math
 import numbers
 import numpy
-from settings import Settings
-from source import Source
-from observatory import Observatory
-from camera import Camera
-from optic import Optic
-from filter import Filter
-import element
+from src.source import Source
+from src.observatory import Observatory
+from src.camera import Camera
+from src.optic import Optic
+from src.filter import Filter
+from src import element
 
 
 class Imsim(element.Element):

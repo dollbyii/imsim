@@ -1,6 +1,6 @@
 import unittest
-from source import Source
-from settings import Settings
+from src.source import Source
+from src.settings import Settings
 import os.path
 
 

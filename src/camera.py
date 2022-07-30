@@ -1,9 +1,6 @@
-import logging
 import math
 import numbers
-import os.path
-from settings import Settings
-import element
+from src import element
 
 
 class Camera(element.Element):

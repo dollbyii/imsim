@@ -1,6 +1,6 @@
 import unittest
-from optic import Optic
-from settings import Settings
+from src.optic import Optic
+from src.settings import Settings
 import os.path
 
 

@@ -1,6 +1,6 @@
 import unittest
-from filter import Filter
-from settings import Settings
+from src.filter import Filter
+from src.settings import Settings
 import os.path
 
 

@@ -1,6 +1,6 @@
 import math
 import numbers
-import element
+from src import element
 
 
 class Observatory(element.Element):

@@ -1,6 +1,6 @@
 import unittest
-from camera import Camera
-from settings import Settings
+from src.camera import Camera
+from src.settings import Settings
 import os.path
 
 
@@ -82,7 +82,7 @@ class CameraTest(unittest.TestCase):
 
     def test_init_KL6060bsi_nb_photocell_axis2(self):
         camera = self.__setCamera("KL6060bsi")
-        self.assertEqual(camera.nb_photocell_axis2, 6144)
+        self.assertEqual(camera.nb_photocell_axis2, 6200)
 
     def test_init_KL6060bsi_photocell_size_axis2(self):
         camera = self.__setCamera("KL6060bsi")
@@ -98,15 +98,15 @@ class CameraTest(unittest.TestCase):
 
     def test_init_KL6060bsi_readout_noise(self):
         camera = self.__setCamera("KL6060bsi")
-        self.assertEqual(camera.readout_noise, 4)
+        self.assertEqual(camera.readout_noise, 4.7)
 
     def test_init_KL6060bsi_dark_currant(self):
         camera = self.__setCamera("KL6060bsi")
-        self.assertEqual(camera.dark_currant, 0.6)
+        self.assertEqual(camera.dark_currant, 0.2)
 
     def test_init_KL6060bsi_gain(self):
         camera = self.__setCamera("KL6060bsi")
-        self.assertEqual(camera.gain, 7.3)
+        self.assertEqual(camera.gain, 1.5)
 
     def test_init_KL6060bsi_electron_multiplier(self):
         camera = self.__setCamera("KL6060bsi")
@@ -131,7 +131,7 @@ class CameraTest(unittest.TestCase):
 
     def test_get_KL6060bsi_nb_photocell_axis2(self):
         camera = self.__setCamera("KL6060bsi")
-        self.assertEqual(camera.get_nb_photocell_axis2(), 6144)
+        self.assertEqual(camera.get_nb_photocell_axis2(), 6200)
 
     def test_get_KL6060bsi_photocell_size_axis2(self):
         camera = self.__setCamera("KL6060bsi")
@@ -147,15 +147,15 @@ class CameraTest(unittest.TestCase):
 
     def test_get_KL6060bsi_readout_noise(self):
         camera = self.__setCamera("KL6060bsi")
-        self.assertEqual(camera.get_readout_noise(), 4)
+        self.assertEqual(camera.get_readout_noise(), 4.7)
 
     def test_get_KL6060bsi_dark_currant(self):
         camera = self.__setCamera("KL6060bsi")
-        self.assertEqual(camera.get_dark_currant(), 0.6)
+        self.assertEqual(camera.get_dark_currant(), 0.2)
 
     def test_get_KL6060bsi_gain(self):
         camera = self.__setCamera("KL6060bsi")
-        self.assertEqual(camera.get_gain(), 7.3)
+        self.assertEqual(camera.get_gain(), 1.5)
 
     def test_get_KL6060bsi_electron_multiplier(self):
         camera = self.__setCamera("KL6060bsi")

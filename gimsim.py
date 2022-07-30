@@ -2,12 +2,11 @@ import tkinter as tk
 # import filedialog module
 from tkinter import filedialog
 
-from tkinter import ttk
 from tkinter.messagebox import showinfo
 
 import os
 
-from settings import Settings
+from src.settings import Settings
 from imsim import Imsim
 
 GIMSIM_VERSION = "1.0.0"
@@ -30,11 +29,11 @@ config_val = tk.StringVar()
 
 # Init values
 snr_val.set(7)
-def_conf_file = "C:/Users/leymar/PycharmProjects/imsim/test/imsim_conf_unitest.yml"
+def_conf_file = ""
 setting_path.set(def_conf_file)
 setting = Settings(def_conf_file)
-config_val.set("tesca_1")
-imsim = Imsim(setting, config_val.get())
+config_val.set("DEFAULT")
+imsim = Imsim("", config_val.get())
 
 
 # Definition des fonctions
@@ -45,12 +44,15 @@ def load_conf():
     """
     global imsim
     conf_file = setting_path.get()
+    print(conf_file)
     settings = Settings(conf_file)
     imsim = Imsim(settings, config_val.get())
+    print(imsim.get_name())
 
 
 # Fonction pour la fenaitre de l'explorateur
 def browsefiles():
+    print("toto")
     cwd = os.getcwd()
     filename = filedialog.askopenfilename(initialdir=cwd,
                                           title="Select a File",
@@ -59,7 +61,9 @@ def browsefiles():
                                                      ("all files",
                                                       "*.*")))
     # Change label contents
-    setting_path.set(filename)
+    if os.path.exists(filename):
+        setting_path.set(filename)
+        load_conf()
 
 
 def aproposgest():
@@ -76,6 +80,7 @@ def gen_mag_lim():
     """ callback when the mag_lim button clicked
     """
     global imsim
+    print(imsim.get_name())
     snr = snr_val.get()
     exp_time = exp_time_in.get()
     mag_lim = imsim.limit_mag_from_snr_exposure_time(snr, exp_time)
@@ -145,6 +150,7 @@ setting_path_label_l.grid(row=0, column=0, sticky="e")
 setting_path_l.grid(row=0, column=1, columnspan=3, sticky="nsew")
 config_l.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
 config_e.grid(row=1, column=1, sticky="nsew", padx=5, pady=5)
+frame_config.columnconfigure(1, minsize=300)
 reload_b.grid(row=1, column=2, sticky="nsew", padx=5, pady=5)
 
 snr_l.grid(row=0, column=0, sticky="e")

@@ -1,7 +1,7 @@
 import unittest
 from imsim import Imsim
 import os.path
-from settings import Settings
+from src.settings import Settings
 
 
 class ImSimTest(unittest.TestCase):

@@ -1,6 +1,6 @@
 import logging
 import os.path
-from settings import Settings
+from src.settings import Settings
 from abc import ABC, abstractmethod
 
 

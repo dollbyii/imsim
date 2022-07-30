@@ -1,6 +1,6 @@
 import unittest
-from observatory import Observatory
-from settings import Settings
+from src.observatory import Observatory
+from src.settings import Settings
 import os.path
 
 
@@ -42,11 +42,11 @@ class ObservatoryTest(unittest.TestCase):
 
     def test_init_myobservatory_seeing(self):
         observatory = self.__setObservatory("myobservatory")
-        self.assertEqual(observatory.seeing, 3)
+        self.assertEqual(observatory.seeing, 1.0)
 
     def test_init_myobservatory_sky_brightness(self):
         observatory = self.__setObservatory("myobservatory")
-        self.assertEqual(observatory.sky_brightness, 21.8)
+        self.assertEqual(observatory.sky_brightness, 21.0)
 
     # Test Get
     def test_get_myobservatory_elevation(self):
@@ -59,11 +59,11 @@ class ObservatoryTest(unittest.TestCase):
 
     def test_get_myobservatory_seeing(self):
         observatory = self.__setObservatory("myobservatory")
-        self.assertEqual(observatory.get_seeing(), 3)
+        self.assertEqual(observatory.get_seeing(), 1.0)
 
     def test_get_myobservatory_sky_brightness(self):
         observatory = self.__setObservatory("myobservatory")
-        self.assertEqual(observatory.get_sky_brightness(), 21.8)
+        self.assertEqual(observatory.get_sky_brightness(), 21.0)
 
     # Test set
     def test_set_myobservatory_elevation(self):
