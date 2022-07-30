@@ -25,7 +25,9 @@ IMSIM :
   test :
     CAMERA: KL6060bsi
     OPTIC: rifast400
-    FILTER: C
+    FILTER:
+      - C
+      - V
     SOURCE: vega
     OBSERVATORY: myobservatory
 
