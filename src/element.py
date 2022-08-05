@@ -26,6 +26,8 @@ class Element:
             name = "DEFAULT"
 
         self.str = self.__class__.__name__ + " : "
+        self.setting_status = False
+
         self.local_setting = self._get_setting_obj_from_param(settings)
         if isinstance(self.local_setting, Settings):
             self.local_setting.set_sub_setting_path([self.SETTING_PATH_ROOT])

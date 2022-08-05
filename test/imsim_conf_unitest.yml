@@ -31,6 +31,15 @@ IMSIM :
     SOURCE: vega
     OBSERVATORY: myobservatory
 
+  test2:
+    CAMERA: KL6060bsi
+    OPTIC: rifast400
+    FILTER:
+      - C
+      - V
+    SOURCE: vega
+    OBSERVATORY: myobservatory
+
   tesca_1 :
     CAMERA: KL6060bsi
     OPTIC: tesca

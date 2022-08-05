@@ -26,7 +26,7 @@ class Source(element.Element):
 
         super().__init__(settings, name)
         if self.name is not None:
-            self.load_settings()
+            self.setting_status = self.load_settings()
 
     def __str__(self):
         return str(self.str)
@@ -60,15 +60,20 @@ class Source(element.Element):
             Returns :
                 bool : The return value. True for success, False otherwise.
         """
+        self.setting_status = False
         if not super()._check_settings():
             return False
+        return_val = True
 
-        self.set_abs_stellar_mag(self._get_setting_val("abs_stellar_mag"))
-        self.set_dl_mpc(self._get_setting_val("dl_mpc"))
-        self.set_app_stellar_mag(self.local_setting.get_setting([self.name, "app_stellar_mag"]))
-        self.ph_band = self._get_setting_val("ph_band")
-
-        return True
+        if not self.set_app_stellar_mag(self.local_setting.get_setting([self.name, "app_stellar_mag"])):
+            if not self.set_abs_stellar_mag(self._get_setting_val("abs_stellar_mag")):
+                return_val = False
+            if not self.set_dl_mpc(self._get_setting_val("dl_mpc")):
+                return_val = False
+        if not self.set_ph_band(self._get_setting_val("ph_band")):
+            return_val = False
+        self.setting_status = return_val
+        return return_val
 
     def set_abs_stellar_mag(self, abs_stellar_mag):
         """set_abs_stellar_mag set abs_stellar_mag value

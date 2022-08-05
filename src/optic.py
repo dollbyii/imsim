@@ -27,7 +27,7 @@ class Optic(element.Element):
 
         super().__init__(settings, name)
         if self.name is not None:
-            self.load_settings()
+            self.setting_status = self.load_settings()
 
     def __str__(self):
         return str(self.str)
@@ -52,19 +52,24 @@ class Optic(element.Element):
             Returns :
                 bool : The return value. True for success, False otherwise.
         """
+        self.setting_status = False
         if not super()._check_settings():
             return False
-
-        self.set_diameter(self._get_setting_val("diameter"))
-        self.set_focal_length(self.local_setting.get_setting([self.name, "focal_length"]))
-        self.set_foc_diameter_ratio(self.local_setting.get_setting([self.name, "foc_diameter_ratio"]))
-        if self.focal_length is None :
-            self.set_focal_length(self.local_setting.get_setting([self.SETTING_DEFAULT_NAME, "focal_length"]))
-        self.set_transmission(self._get_setting_val("transmission"))
-        self.set_fwhm_psf_opt(self._get_setting_val("fwhm_psf_opt"))
-        self.set_corrected_circle(self._get_setting_val("corrected_circle"))
-
-        return True
+        return_val = True
+        if not self.set_diameter(self._get_setting_val("diameter")):
+            return_val = False
+        if not self.set_focal_length(self._get_setting_val("focal_length")):
+            return_val = False
+        if not self.set_foc_diameter_ratio(self._get_setting_val("foc_diameter_ratio")):
+            return_val = False
+        if not self.set_transmission(self._get_setting_val("transmission")):
+            return_val = False
+        if not self.set_fwhm_psf_opt(self._get_setting_val("fwhm_psf_opt")):
+            return_val = False
+        if not self.set_corrected_circle(self._get_setting_val("corrected_circle")):
+            return_val = False
+        self.setting_status = return_val
+        return return_val
 
     def set_diameter(self, diameter):
         """set_diameter set diameter value

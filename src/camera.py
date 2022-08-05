@@ -47,22 +47,36 @@ class Camera(element.Element):
             Returns :
                 bool : The return value. True for success, False otherwise.
         """
+        self.setting_status = False
         if not super()._check_settings():
             return False
-
-        self.set_sensor_type(self._get_setting_val("sensor_type"))
-        self.set_nb_photocell_axis1(self._get_setting_val("nb_photocell_axis1"))
-        self.set_photocell_size_axis1(self._get_setting_val("photocell_size_axis1"))
-        self.set_bin_axis1(self._get_setting_val("bin_axis1"))
-        self.set_nb_photocell_axis2(self._get_setting_val("nb_photocell_axis2"))
-        self.set_photocell_size_axis2(self._get_setting_val("photocell_size_axis2"))
-        self.set_bin_axis2(self._get_setting_val("bin_axis2"))
-        self.set_quantum_efficiency(self._get_setting_val("quantum_efficiency"))
-        self.set_readout_noise(self._get_setting_val("readout_noise"))
-        self.set_dark_currant(self._get_setting_val("dark_currant"))
-        self.set_gain(self._get_setting_val("gain"))
-        self.set_electron_multiplier(self._get_setting_val("electron_multiplier"))
-        return True
+        return_val = True
+        if not self.set_sensor_type(self._get_setting_val("sensor_type")):
+            return_val = False
+        if not self.set_nb_photocell_axis1(self._get_setting_val("nb_photocell_axis1")):
+            return_val = False
+        if not self.set_photocell_size_axis1(self._get_setting_val("photocell_size_axis1")):
+            return_val = False
+        if not self.set_bin_axis1(self._get_setting_val("bin_axis1")):
+            return_val = False
+        if not self.set_nb_photocell_axis2(self._get_setting_val("nb_photocell_axis2")):
+            return_val = False
+        if not self.set_photocell_size_axis2(self._get_setting_val("photocell_size_axis2")):
+            return_val = False
+        if not self.set_bin_axis2(self._get_setting_val("bin_axis2")):
+            return_val = False
+        if not self.set_quantum_efficiency(self._get_setting_val("quantum_efficiency")):
+            return_val = False
+        if not self.set_readout_noise(self._get_setting_val("readout_noise")):
+            return_val = False
+        if not self.set_dark_currant(self._get_setting_val("dark_currant")):
+            return_val = False
+        if not self.set_gain(self._get_setting_val("gain")):
+            return_val = False
+        if not self.set_electron_multiplier(self._get_setting_val("electron_multiplier")):
+            return_val = False
+        self.setting_status = return_val
+        return return_val
 
     def set_sensor_type(self, sensor_type):
         """get_sensor_type set sensor_type value

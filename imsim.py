@@ -33,6 +33,8 @@ class Imsim(element.Element):
         self.optic = None
         self.filter = None
 
+        self.setting_status = False
+
         self.default_exposure_time = None  # exposure time (s)
         self.default_snr = None  # snr
 
@@ -44,7 +46,7 @@ class Imsim(element.Element):
 
         super().__init__(settings, name)
         if self.name is not None:
-            self.load_settings()
+            self.setting_status = self.load_settings()
 
     def __str__(self):
         return str(self.str)
@@ -55,6 +57,7 @@ class Imsim(element.Element):
             Returns :
                 bool : The return value. True for success, False otherwise.
         """
+        self.setting_status = False
         if not super()._check_settings():
             return False
         return_val = True
@@ -68,7 +71,7 @@ class Imsim(element.Element):
             return_val = False
         if not self.set_filter(self._get_setting_val("FILTER")):
             return_val = False
-
+        self.setting_status = return_val
         return return_val
 
     def __set_element(self, obj_var, obj_type, setting=None):
@@ -132,7 +135,7 @@ class Imsim(element.Element):
         else:
             self.source = Source(setting, source)
         if isinstance(self.source, Source):
-            return True
+            return self.source.setting_status
         self.logger.warning("Invalid argument source must be a source "
                             "object or the name of a configured source ".format(source))
         return False

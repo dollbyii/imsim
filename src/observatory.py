@@ -59,7 +59,7 @@ class Observatory(element.Element):
 
         super().__init__(settings, name)
         if self.name is not None:
-            self.load_settings()
+            self.setting_status = self.load_settings()
 
     def __str__(self):
         return str(self.str)
@@ -70,19 +70,25 @@ class Observatory(element.Element):
             Returns :
                 bool : The return value. True for success, False otherwise.
         """
+        self.setting_status = False
         if not super()._check_settings():
             return False
-
-        self.set_elevation(self._get_setting_val("elevation"))
-        self.set_atmosphere_transmission(self._get_setting_val("atmosphere_transmission"))
-        self.set_seeing(self._get_setting_val("seeing"))
-        self.set_sky_brightness(self._get_setting_val("sky_brightness"))
-        if self.get_sky_brightness() is None:
+        return_val = True
+        if not self.set_elevation(self._get_setting_val("elevation")):
+            return_val = False
+        if not self.set_atmosphere_transmission(self._get_setting_val("atmosphere_transmission")):
+            return_val = False
+        if not self.set_seeing(self._get_setting_val("seeing")):
+            return_val = False
+        if not self.set_sky_brightness(self._get_setting_val("sky_brightness")):
             lunar_age = self._get_setting_val("lunar_age")
             photometric_band = self._get_setting_val("photometric_band")
             if lunar_age is not None and photometric_band is not None:
                 self.set_sky_brightness_with_lunar_ages(lunar_age, photometric_band)
-        return True
+            else:
+                return_val = False
+        self.setting_status = return_val
+        return return_val
 
     def set_elevation(self, elevation):
         """set_elevation set elevation value

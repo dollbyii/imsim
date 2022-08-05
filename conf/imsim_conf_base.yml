@@ -12,20 +12,20 @@ IMSIM :
     OPTIC : rifast800
     FILTER : C
     SOURCE : vega
-    OBSERVATORY : myobservatory
+    OBSERVATORY : Calern
     
   test :
     CAMERA: KL6060bsi
     OPTIC: rifast400
     FILTER: C
     SOURCE: vega
-    OBSERVATORY: myobservatory
+    OBSERVATORY: Calern
 
   tesca_KL6060BSI :
     CAMERA: KL6060bsi
     OPTIC: tesca
     FILTER: C
-    OBSERVATORY: myobservatory
+    OBSERVATORY: Calern
 
 #definition of camera
 CAMERA :

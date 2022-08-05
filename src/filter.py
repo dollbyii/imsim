@@ -27,7 +27,7 @@ class Filter(element.Element):
 
         super().__init__(settings, name)
         if self.name is not None:
-            self.load_settings()
+            self.setting_status = self.load_settings()
 
     def __str__(self):
         return str(self.str)
@@ -38,16 +38,22 @@ class Filter(element.Element):
             Returns :
                 bool : The return value. True for success, False otherwise.
         """
+        self.setting_status = False
         if not super()._check_settings():
             return False
-
-        self.set_band(self._get_setting_val("band"))
-        self.set_central_wavelength(self._get_setting_val("central_wavelength"))
-        self.set_bandpass_width(self._get_setting_val("bandpass_width"))
-        self.set_flux_mag_zero(self._get_setting_val("flux_mag_zero"))
-        self.set_transmission(self._get_setting_val("transmission"))
-
-        return True
+        return_val = True
+        if not self.set_band(self._get_setting_val("band")):
+            return_val = False
+        if not self.set_central_wavelength(self._get_setting_val("central_wavelength")):
+            return_val = False
+        if not self.set_bandpass_width(self._get_setting_val("bandpass_width")):
+            return_val = False
+        if not self.set_flux_mag_zero(self._get_setting_val("flux_mag_zero")):
+            return_val = False
+        if not self.set_transmission(self._get_setting_val("transmission")):
+            return_val = False
+        self.setting_status = return_val
+        return return_val
 
     def set_band(self, band):
         """set_band set band value
