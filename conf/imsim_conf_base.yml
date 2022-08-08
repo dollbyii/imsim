@@ -60,6 +60,62 @@ CAMERA :
     electron_multiplier : 1
     exposure_time : 10
 
+  QHY411:
+    sensor_type: CMOS
+    nb_photocell_axis1: 14192
+    photocell_size_axis1: 3.76e-6
+    bin_axis1: 1
+    nb_photocell_axis2: 10640
+    photocell_size_axis2: 3.76e-6
+    bin_axis2: 1
+    quantum_efficiency: 0.95
+    readout_noise: 3.7
+    dark_currant: 0.005
+    gain: 0.5
+    electron_multiplier: 1
+
+  QHY600U3G20M:
+    sensor_type: CMOS
+    nb_photocell_axis1: 9576
+    photocell_size_axis1: 3.76e-6
+    bin_axis1: 1
+    nb_photocell_axis2: 6388
+    photocell_size_axis2: 3.76e-6
+    bin_axis2: 1
+    quantum_efficiency: 0.95
+    readout_noise: 3.7
+    dark_currant: 0.005
+    gain: 0.5
+    electron_multiplier: 1
+
+  QHY6060FSI:
+    sensor_type: CMOS
+    nb_photocell_axis1: 6144
+    photocell_size_axis1: 10e-6
+    bin_axis1: 1
+    nb_photocell_axis2: 6200
+    photocell_size_axis2: 10e-6
+    bin_axis2: 1
+    quantum_efficiency: 0.72
+    readout_noise: 4.7
+    dark_currant: 0.003
+    gain: 1.5
+    electron_multiplier: 1
+
+  QHY6060BSI:
+    sensor_type: CMOS
+    nb_photocell_axis1: 6144
+    photocell_size_axis1: 10e-6
+    bin_axis1: 1
+    nb_photocell_axis2: 6200
+    photocell_size_axis2: 10e-6
+    bin_axis2: 1
+    quantum_efficiency: 0.95
+    readout_noise: 4.7
+    dark_currant: 0.003
+    gain: 1.5
+    electron_multiplier: 1
+
   KL6060bsi:
     sensor_type : CMOS
     nb_photocell_axis1 : 6144
@@ -73,7 +129,19 @@ CAMERA :
     dark_currant : 0.2
     gain : 1.5
 
-
+  ZWO6200MM:
+    sensor_type: CMOS
+    nb_photocell_axis1: 9576
+    photocell_size_axis1: 3.76e-6
+    bin_axis1: 1
+    nb_photocell_axis2: 6388
+    photocell_size_axis2: 3.76e-6
+    bin_axis2: 1
+    quantum_efficiency: 0.95
+    readout_noise: 3.7
+    dark_currant: 0.005
+    gain: 0.5
+    electron_multiplier: 1
 
 #definition of optic
 OPTIC :
@@ -91,32 +159,110 @@ OPTIC :
     transmission : 0.4
     fwhm_psf_opt : 8e-6
 
-  rifast800 :
+  tarot:
+    diameter: 0.25
+    focal_length: 0,85
+    transmission: 0.48
+    fwhm_psf_opt: 10e-6
+    corrected_circle: 0.04
+
+  takahashi_180ed:
+    diameter: 0.18
+    focal_length: 0,504
+    transmission: 0.55
+    fwhm_psf_opt: 5e-6
+    corrected_circle: 0.044
+
+  asa_200_Newton:
+    diameter: 0.2
+    focal_length: 0,56
+    transmission: 0.54
+    fwhm_psf_opt: 5e-6
+    corrected_circle: 0.052
+
+  asa_250_Newton:
+    diameter: 0.25
+    focal_length: 0,9
+    transmission: 0.61
+    fwhm_psf_opt: 5e-6
+    corrected_circle: 0.05
+
+  asa_H400:
+    diameter: 0.4
+    focal_length: 0,96
+    transmission: 0.61
+    fwhm_psf_opt: 5e-6
+    corrected_circle: 0.052
+
+  os_rifast800 :
     diameter : 0.8
     focal_length : 3.04
     transmission : 0.4
     fwhm_psf_opt : 8e-6
     corrected_circle : 0.08
   
-  rifast800r :
+  os_rifast800r :
     diameter : 0.8
     focal_length : 2.371
     transmission : 0.4
     fwhm_psf_opt : 8e-6
     corrected_circle : 0.08
 
-  rifast400 :
-    diameter : 0.4
-    foc_diameter_ratio : 3.8
-    transmission : 0.50
-    fwhm_psf_opt : 5e-6
-    orrected_circle : 0.07
+  os_rifast500:
+    diameter: 0.5
+    foc_diameter_ratio: 3.8
+    transmission: 0.50
+    fwhm_psf_opt: 8e-6
+    orrected_circle: 0.08
+
+
+  os_rifast400:
+    diameter: 0.4
+    foc_diameter_ratio: 3.8
+    transmission: 0.50
+    fwhm_psf_opt: 8e-6
+    orrected_circle: 0.07
+
+  os_rifast300:
+    diameter: 0.3
+    foc_diameter_ratio: 3.8
+    transmission: 0.48
+    fwhm_psf_opt: 8e-6
+    orrected_circle: 0.
+
+  os_RH350_AT:
+    diameter: 0.350
+    foc_diameter_ratio: 2.8
+    transmission: 0.47
+    fwhm_psf_opt: 5e-6
+    orrected_circle: 0.06
+
+  os_RH320_AT:
+    diameter: 0.320
+    foc_diameter_ratio: 2.2
+    transmission: 0.52
+    fwhm_psf_opt: 5e-6
+    orrected_circle: 0.052
+
+  HTP-500:
+    diameter: 0.5
+    foc_diameter_ratio: 3
+    transmission: 0.65
+    fwhm_psf_opt: 5e-6
+    orrected_circle: 0.07
+
+  Celestron_RASA_11:
+    diameter: 0.28
+    foc_diameter_ratio: 2.2
+    transmission: 0.54
+    fwhm_psf_opt: 5e-6
+    orrected_circle: 0.07
 
   tesca:
     diameter: 0.9
     focal_length: 3.161
-    transmission: 0.68
-    fwhm_psf_opt: 8e-6
+    transmission: 0.61
+    fwhm_psf_opt: 15e-6
     orrected_circle: 0.3
 
 #definition of filter
@@ -220,7 +366,6 @@ FILTER :
     flux_mag_zero: 4810
     transmission: 1
 
-
 #definition of source
 SOURCE :
   #default value for source
@@ -255,4 +400,4 @@ OBSERVATORY :
     elevation: 65
     atmosphere_transmission: 0.5
     seeing: 1.0
-    sky_brightness: 21.0
+    sky_brightness: 21.5

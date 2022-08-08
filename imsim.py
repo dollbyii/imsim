@@ -15,7 +15,7 @@ class Imsim(element.Element):
     """
     SETTING_PATH_ROOT = "IMSIM"
     SETTING_DEFAULT_NAME = "DEFAULT"
-    VERSION = "1.0.0"
+    VERSION = "1.1.0"
 
     def __init__(self, settings, name):
         """init for Imsim
@@ -93,31 +93,6 @@ class Imsim(element.Element):
         self.logger.warning("Invalid argument source must be a source "
                             "object or the name of a configured source ".format(obj_var))
         return None
-
-    def set_source2(self, source, setting=None):
-        """set_source set source value
-            Args :
-                source (source or str) : source or sournce name in setting file
-                setting :
-            Returns :
-                bool : The return value. True for success, False otherwise.
-        """
-        self.source = None
-        if isinstance(source, Source):
-            self.source = source
-            return True
-        elif isinstance(source, str):
-            setting = super()._get_setting_obj_from_param(setting)
-            if setting is None:
-                setting = self.local_setting
-
-            self.source = Source(setting, source)
-            if self.source.get_name() is None:
-                return False
-            return True
-        self.logger.warning("Invalid argument source must be a source "
-                            "object or the name of a configured source ".format(source))
-        return False
 
     def set_source(self, source, setting=None):
         """set_source set source value
