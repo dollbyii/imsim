@@ -8,21 +8,21 @@ IMSIM :
     OBSERVATORY : DEFAULT
   myconfig1 :
     #List means do simulation for all value
-    CAMERA : KL6060bsi
+    CAMERA : FLI_KL6060bsi
     OPTIC : rifast800
     FILTER : C
     SOURCE : vega
     OBSERVATORY : Calern
     
   test :
-    CAMERA: KL6060bsi
+    CAMERA: FLI_KL6060bsi
     OPTIC: rifast400
     FILTER: C
     SOURCE: vega
     OBSERVATORY: Calern
 
   tesca_KL6060BSI :
-    CAMERA: KL6060bsi
+    CAMERA: FLI_KL6060bsi
     OPTIC: tesca
     FILTER: C
     OBSERVATORY: Calern
@@ -116,7 +116,7 @@ CAMERA :
     gain: 1.5
     electron_multiplier: 1
 
-  KL6060bsi:
+  FLI_KL6060bsi:
     sensor_type : CMOS
     nb_photocell_axis1 : 6144
     photocell_size_axis1 : 10e-6
@@ -143,6 +143,48 @@ CAMERA :
     gain: 0.5
     electron_multiplier: 1
 
+  Andor_DW436:
+    sensor_type: CCD
+    nb_photocell_axis1: 2048
+    photocell_size_axis1: 13.5e-6
+    bin_axis1: 1
+    nb_photocell_axis2: 2048
+    photocell_size_axis2: 13.5e-6
+    bin_axis2: 1
+    quantum_efficiency: 0.85
+    readout_noise: 9.2
+    dark_currant: 0.045
+    gain: 2.8
+    electron_multiplier: 1
+
+  Andor_DZ936:
+    sensor_type: CCD
+    nb_photocell_axis1: 2048
+    photocell_size_axis1: 13.5e-6
+    bin_axis1: 1
+    nb_photocell_axis2: 2048
+    photocell_size_axis2: 13.5e-6
+    bin_axis2: 1
+    quantum_efficiency: 0.9
+    readout_noise: 2.9
+    dark_currant: 0.00013
+    gain: 2.8
+    electron_multiplier: 1
+
+  SI_290-99_1MHz:
+    sensor_type: CCD
+    nb_photocell_axis1: 9216
+    photocell_size_axis1: 10e-6
+    bin_axis1: 1
+    nb_photocell_axis2: 9232
+    photocell_size_axis2: 10e-6
+    bin_axis2: 1
+    quantum_efficiency: 0.92
+    readout_noise: 5.5
+    dark_currant: 0.0015
+    gain: 15
+    electron_multiplier: 1
+
 #definition of optic
 OPTIC :
   #default value for optic
@@ -161,35 +203,35 @@ OPTIC :
 
   tarot:
     diameter: 0.25
-    focal_length: 0,85
+    focal_length: 0.85
     transmission: 0.48
     fwhm_psf_opt: 10e-6
     corrected_circle: 0.04
 
   takahashi_180ed:
     diameter: 0.18
-    focal_length: 0,504
+    focal_length: 0.504
     transmission: 0.55
     fwhm_psf_opt: 5e-6
     corrected_circle: 0.044
 
   asa_200_Newton:
     diameter: 0.2
-    focal_length: 0,56
+    focal_length: 0.56
     transmission: 0.54
     fwhm_psf_opt: 5e-6
     corrected_circle: 0.052
 
   asa_250_Newton:
     diameter: 0.25
-    focal_length: 0,9
+    focal_length: 0.9
     transmission: 0.61
     fwhm_psf_opt: 5e-6
     corrected_circle: 0.05
 
   asa_H400:
     diameter: 0.4
-    focal_length: 0,96
+    focal_length: 0.96
     transmission: 0.61
     fwhm_psf_opt: 5e-6
     corrected_circle: 0.052
